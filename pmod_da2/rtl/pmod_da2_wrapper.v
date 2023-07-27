@@ -1,0 +1,61 @@
+module pmod_da2_wrapper (
+  input CLK_i,
+  output DAC121S101_SCLK_o,
+  output DAC121S101_SYNC_o,
+  output DAC121S101_DIN0_o,
+  output DAC121S101_DIN1_o,
+  input [15:0] DAC_DATA0_i,
+  input [15:0] DAC_DATA1_i,
+  //AXI4-Lite Interface
+  input AXI_ACLK_i,
+  input AXI_ARESETN_i,
+  input [31:0] S_AXI_ARADDR,
+  output S_AXI_ARREADY,
+  input S_AXI_ARVALID,
+  input [31:0] S_AXI_AWADDR,
+  output S_AXI_AWREADY,
+  input S_AXI_AWVALID,
+  input S_AXI_BREADY,
+  output [1:0] S_AXI_BRESP,
+  output S_AXI_BVALID,
+  output [31:0] S_AXI_RDATA,
+  input S_AXI_RREADY,
+  output [1:0] S_AXI_RRESP,
+  output S_AXI_RVALID,
+  input [31:0] S_AXI_WDATA,
+  output S_AXI_WREADY,
+  input [3:0] S_AXI_WSTRB,
+  input S_AXI_WVALID
+);
+
+pmod_da2 pmod_da2_inst (
+  .CLK_i             (CLK_i),
+  .DAC121S101_SCLK_o (DAC121S101_SCLK_o),
+  .DAC121S101_SYNC_o (DAC121S101_SYNC_o),
+  .DAC121S101_DIN0_o (DAC121S101_DIN0_o),
+  .DAC121S101_DIN1_o (DAC121S101_DIN1_o),
+  .DAC_DATA0_i       (DAC_DATA0_i),
+  .DAC_DATA1_i       (DAC_DATA1_i),
+  //AXI4-Lite Interface
+  .AXI_ACLK_i        (AXI_ACLK_i),
+  .AXI_ARESETN_i     (AXI_ARESETN_i),
+  .AXI_ARADDR_i      (S_AXI_ARADDR),
+  .AXI_ARREADY_o     (S_AXI_ARREADY),
+  .AXI_ARVALID_i     (S_AXI_ARVALID),
+  .AXI_AWADDR_i      (S_AXI_AWADDR),
+  .AXI_AWREADY_o     (S_AXI_AWREADY),
+  .AXI_AWVALID_i     (S_AXI_AWVALID),
+  .AXI_BREADY_i      (S_AXI_BREADY),
+  .AXI_BRESP_o       (S_AXI_BRESP),
+  .AXI_BVALID_o      (S_AXI_BVALID),
+  .AXI_RDATA_o       (S_AXI_RDATA),
+  .AXI_RREADY_i      (S_AXI_RREADY),
+  .AXI_RRESP_o       (S_AXI_RRESP),
+  .AXI_RVALID_o      (S_AXI_RVALID),
+  .AXI_WDATA_i       (S_AXI_WDATA),
+  .AXI_WREADY_o      (S_AXI_WREADY),
+  .AXI_WSTRB_i       (S_AXI_WSTRB),
+  .AXI_WVALID_i      (S_AXI_WVALID)
+);
+
+endmodule
